@@ -1,0 +1,31 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrderBottom(self, root):
+        if not root:
+            return []
+        self.ret = []
+        
+        def travesal(root, level):
+            if not root:
+                return
+            if len(self.ret) < level:
+                self.ret.append([])
+            self.ret[level-1].append(root.val)
+            travesal(root.left, level+1)
+            travesal(root.right, level+1)
+            
+        travesal(root, 1)
+        return self.ret[::-1]
+        
+   
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        
