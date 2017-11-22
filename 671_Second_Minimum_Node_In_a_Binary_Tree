@@ -1,0 +1,28 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+# Sophia: root is the minimum value, therefore, find the maxmum for the rest 
+
+class Solution(object):
+    def findSecondMinimumValue(self, root):
+        if not root:
+            return -1
+        return self.findHelper(root, root.val)
+        
+    def findHelper(self, root, first):
+        if not root:
+            return -1
+        if root.val != first:
+            return root.val
+        l = self.findHelper(root.left, first)
+        r = self.findHelper(root.right, first)
+        
+        if l == -1:
+            return r
+        if r == -1: 
+            return l
+        return min(l, r)
+        
