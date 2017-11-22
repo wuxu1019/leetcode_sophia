@@ -26,3 +26,22 @@ class Solution(object):
             return l
         return min(l, r)
         
+class Solution(object):
+    def findSecondMinimumValue(self, root):
+        if not root:
+            return -1
+        self.small = float('INF')
+        
+        def traverse(node):
+            if not node:
+                return -1
+            if root.val < node.val and node.val < self.small:
+                self.small = node.val
+            traverse(node.left)
+            traverse(node.right)
+        
+        traverse(root)
+        if self.small != float('INF'):
+            return self.small
+        else:
+            return -1
