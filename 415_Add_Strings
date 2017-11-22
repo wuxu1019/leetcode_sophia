@@ -1,0 +1,14 @@
+ass Solution(object):
+    def addStrings(self, num1, num2):
+        num3, carry, two0 = [], 0, 2*ord('0')
+        for i in range(max(len(num1), len(num2))):
+            add = ord(num1[i]) + ord(num2[i]) - two0 + carry
+            if add > 9:
+                carry = 1
+                add -= 10
+            else:
+                carry = 0
+            num3.append(str(add))
+        if carry:
+            num3.append('1')
+        return ''.join(num3[::-1])
