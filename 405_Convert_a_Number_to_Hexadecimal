@@ -1,0 +1,19 @@
+# sophia, for positive input, just loop until num break
+# for nagtive input, need to run loop 8 times
+
+class Solution(object):
+    def toHex(self, num):
+        if num==0: 
+            return '0'
+        mp = '0123456789abcdef'  # like a map
+        ans = ''
+        for i in range(8):
+            ans = mp[num & 15] + ans
+            num = num >> 4
+            if not num:
+                break
+        return ans  
+        """
+        :type num: int
+        :rtype: str
+        """
