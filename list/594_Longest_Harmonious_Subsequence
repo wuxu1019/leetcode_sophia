@@ -1,0 +1,19 @@
+class Solution(object):
+    def findLHS(self, nums):
+        if not nums:
+            return 0
+        count = {}
+        for i in nums:
+            count[i] = count.get(i, 0) + 1
+        order = sorted(count.keys())
+        rt = 0
+        for i in range(len(order)-1):
+            if order[i+1] - order[i] == 1:
+                times = count[order[i+1]] + count[order[i]]
+                if times > rt:
+                    rt = times
+        return rt
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
