@@ -1,0 +1,25 @@
+# there are two main ways
+# one way is build a list of lenth N, put zero as element, travesal the input, put +1 for each number, after this, return the one which count 0 and 2 times
+# the second way is using the mathematics formula
+class Solution(object):
+    def findErrorNums(self, nums):
+        dic = {}
+        lth = len(nums)
+        nall = (1 + lth)*lth/2
+        count = 0
+        a = 0
+        for i in nums:
+            count += i
+            if dic.has_key(i):
+                a = i
+            else:
+                dic[i] = 1
+        return [a, a+nall-count]  
+
+class Solution(object):
+    def findErrorNums(self, nums):
+        N = len(nums)
+        alpha = sum(nums) - N*(N+1)/2
+        beta = (sum(x*x for x in nums) - N*(N+1)*(2*N+1)/6) / alpha
+        return (alpha + beta) / 2, (beta - alpha) / 2
+                
