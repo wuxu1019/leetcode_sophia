@@ -1,0 +1,10 @@
+# a faster way is using quick search way nlogn
+class Solution(object):
+    def searchInsert(self, nums, target):
+        p = 0
+        
+        for i in range(0, len(nums)):
+            if target <= nums[i]:
+                return i
+
+        return len(nums)
