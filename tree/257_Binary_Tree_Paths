@@ -1,0 +1,20 @@
+class Solution(object):
+    def binaryTreePaths(self, root):
+        if not root:
+            return []
+        self.paths = []
+        self.findPath(root, "")
+        return self.paths
+    
+    def findPath(self, root, father):
+        if root.left == root.right == None:
+            self.paths.append("{0}{1}".format(father, root.val))
+            return
+        if root.left:
+            self.findPath(root.left, "{0}{1}->".format(father, root.val))
+        if root.right:
+            self.findPath(root.right, "{0}{1}->".format(father, root.val))
+        """
+        :type root: TreeNode
+        :rtype: List[str]
+        """
