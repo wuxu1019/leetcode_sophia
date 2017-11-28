@@ -1,0 +1,29 @@
+class Solution(object):
+    def isSymmetric(self, root):
+        if not root:
+            return True
+        return self.isSymmetricHelper(root.left, root.right)
+        
+    def isSymmetricHelper(self, left, right):
+        if not left and not right:
+            return True
+        if left and right:
+            if left.val != right.val:
+                return False
+            else:
+                return self.isSymmetricHelper(left.left, right.right) and self.isSymmetricHelper(left.right, right.left)
+        return False
+            
+        
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+
+def isSymmetric(self, root):
+        def isSym(L,R):
+            if not L and not R: return True
+            if L and R and L.val == R.val: 
+                return isSym(L.left, R.right) and isSym(L.right, R.left)
+            return False
+        return isSym(root, root)
