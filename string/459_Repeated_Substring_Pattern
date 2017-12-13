@@ -1,0 +1,17 @@
+class Solution(object):
+    def repeatedSubstringPattern(self, s):
+        if not s:
+            return Fasle
+        ss = (s + s)[1:-1]
+        return ss.find(s) != -1
+
+class Solution(object):
+    def repeatedSubstringPattern(self, s):
+        l = len(s)
+        
+        for i in range(1, l):
+            if l % i == 0:
+                if l/i*s[:i] == s:
+                    return True
+        return False
+        
