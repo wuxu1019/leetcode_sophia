@@ -1,0 +1,14 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        rem = float('INF')
+        p = 0
+        for i in range(0, len(nums)):
+            if nums[i] != rem:
+                nums[p] = nums[i]
+                rem = nums[i]
+                p+= 1
+            else:
+                continue
+        for i in range(p, len(nums)):
+            nums.pop()
+        return len(nums)

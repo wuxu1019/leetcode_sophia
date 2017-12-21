@@ -1,0 +1,9 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        if not strs:
+            return ""
+        
+        for i, v in enumerate(zip(*strs)):
+            if len(set(v)) > 1:
+                return strs[0][:i]
+        return min(strs)

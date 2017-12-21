@@ -1,0 +1,34 @@
+class Solution(object):
+    def addBinary(self, a, b):
+        a = int(a, 2)
+        b = int(b, 2)
+        carry = (a & b) << 1
+        rt = a ^ b
+        while carry:
+            new = rt ^ carry
+            carry = (carry & rt) << 1
+            rt = new
+        
+        return bin(rt)[2:] 
+        """
+        :type a: str
+        :type b: str
+        :rtype: str
+        """
+class Solution(object):
+    def addBinary(self, a, b):
+        return bin(int(a, 2) + int(b, 2))[2:]
+class Solution(object):
+    def addBinary(self, a, b):
+        return "{0:b}".format(int(a,2)+int(b,2))
+
+class Solution:
+        def addBinary(self, a, b):
+            if len(a)==0: return b
+            if len(b)==0: return a
+            if a[-1] == '1' and b[-1] == '1':
+                return self.addBinary(self.addBinary(a[0:-1],b[0:-1]),'1')+'0'
+            if a[-1] == '0' and b[-1] == '0':
+                return self.addBinary(a[0:-1],b[0:-1])+'0'
+            else:
+                return self.addBinary(a[0:-1],b[0:-1])+'1'        

@@ -1,0 +1,28 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def minDepth(self, root):
+        if not root:
+            return 0
+        
+        self.mP = float('INF')
+        def travesal(root, degree):
+            if not root:
+                return
+            if not root.left and not root.right:
+                self.mP = min(self.mP, 1+degree)
+                return
+            travesal(root.left, 1+degree)
+            travesal(root.right, 1+degree)
+        travesal(root, 0)
+        return self.mP
+            
+        """
+        :type root: TreeNode
+        :rtype: int
+        """

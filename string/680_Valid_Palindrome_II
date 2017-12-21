@@ -1,0 +1,41 @@
+class Solution(object):
+    def validPalindrome(self, s):
+        if len(s) == 1 or len(s) == 2:
+            return True
+        p1 = 0
+        p2 = len(s)-1
+        
+        flag = False
+        while p2 > p1:
+            if s[p1] == s[p2]:
+                p1 += 1
+                p2 -= 1
+            else:
+                if p2 == p1+1:
+                    return True
+                if flag:
+                    return False
+                if s[p1+1] == s[p2] and s[p1+2] == s[p2-1]:
+                    flag = True
+                    p1 += 1
+                    continue
+                if s[p1] == s[p2-1] and s[p1+1] == s[p2-2]:
+                    flag = True
+                    p2 -= 1
+                    continue
+                return False
+        return True
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+class Solution(object):
+    def validPalindrome(self, s):
+        i = 0
+        while i < len(s)/2 and s[i] == s[-(i+1)]:
+            i += 1
+        s = s[i:len(s)-i]
+        
+        return s[1:] == s[1:][::-1] or s[:-1] == s[:-1][::-1]
+  

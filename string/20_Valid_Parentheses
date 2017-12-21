@@ -1,0 +1,43 @@
+class Solution(object):
+    def isValid(self, s):
+        ls = list(s)
+        dic = {'(':')', "{":'}', '[':']'}
+        stack = []
+        while ls:
+            top = ls.pop()
+            if not dic.has_key(top):
+                stack.append(top)
+            else:
+                if not stack:
+                    return False
+                if dic[top] == stack[-1]:
+                    stack.pop()
+                    continue
+                return False
+        if not stack:
+            return True
+        return False
+        """
+        :type s: str
+        :rtype: bool
+        """
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        n = len(s)
+        if n == 0:
+            return True
+        
+        if n % 2 != 0:
+            return False
+            
+        while '()' in s or '{}' in s or '[]' in s:
+            s = s.replace('{}','').replace('()','').replace('[]','')
+        
+        if s == '':
+            return True
+        else:
+            return False        

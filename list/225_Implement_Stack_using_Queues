@@ -1,0 +1,52 @@
+class MyStack(object):
+
+    def __init__(self):
+        self.q = []
+        """
+        Initialize your data structure here.
+        """
+        
+
+    def push(self, x):
+        self.q.append(x)
+        for i in range(len(self.q)-1):
+            self.q.append(self.q.pop(0))
+            
+        """
+        Push element x onto stack.
+        :type x: int
+        :rtype: void
+        """
+        
+
+    def pop(self):
+        return self.q.pop(0)
+        """
+        Removes the element on top of the stack and returns that element.
+        :rtype: int
+        """
+        
+
+    def top(self):
+        """
+        Get the top element.
+        :rtype: int
+        """
+        return self.q[0]
+        
+
+    def empty(self):
+        return len(self.q) == 0
+        """
+        Returns whether the stack is empty.
+        :rtype: bool
+        """
+        
+
+
+# Your MyStack object will be instantiated and called as such:
+# obj = MyStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.empty()

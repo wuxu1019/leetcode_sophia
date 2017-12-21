@@ -1,0 +1,14 @@
+class Solution(object):
+    def trailingZeroes(self, n):
+        count = 0
+        factor = 5
+        while factor <= n:
+            count += n/factor
+            factor *= 5
+        return count
+            
+        """
+        :type n: int
+        :rtype: int
+        """
+        

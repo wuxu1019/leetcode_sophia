@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isBalanced(self, root):
+        self.isB = True
+        def getDepth(root):
+            if not root:
+                return 0
+            l = 1 + getDepth(root.left)
+            r = 1 + getDepth(root.right)
+            if abs(l-r) > 1:
+                self.isB = False
+            return l if l>r else r
+        getDepth(root)
+        return self.isB
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        

@@ -1,0 +1,36 @@
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        nums1[n:n+m] = nums1[0:m]
+        p1 = n
+        p2 = 0
+        pn = 0
+        while p1 < m+n and p2 < n:
+            if nums1[p1] <= nums2[p2]:
+                nums1[pn] = nums1[p1]
+                pn, p1= pn+1, p1+1
+            else:
+                nums1[pn] = nums2[p2]
+                pn, p2 = pn+1, p2+1
+        while p1 < m+n:
+            nums1[pn] = nums1[p1]
+            pn, p1 = pn+1, p1+1
+        while p2 < n:
+            nums1[pn] = nums2[p2]
+            pn, p2 = pn+1, p2+1
+            
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: void Do not return anything, modify nums1 in-place instead.
+        """
+        
+def merge(self, nums1, m, nums2, n):
+        while n > 0:
+            if m <= 0 or nums2[n-1] >= nums1[m-1]:  
+                nums1[m+n-1] = nums2[n-1]
+                n -= 1
+            else:
+                nums1[m+n-1] = nums1[m-1]
+                m -= 1

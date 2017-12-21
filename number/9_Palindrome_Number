@@ -1,0 +1,37 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        if x < 0:
+            return False
+        new = 0
+        x_r = x
+        while x:
+            new = 10 * new + x % 10
+            x = x / 10
+        if new == x_r:
+            return True
+        return False
+        """
+        :type x: int
+        :rtype: bool
+        """
+ 
+class Solution(object):
+    def isPalindrome(self, x):
+        if x < 0:
+            return False
+        r = 1
+        while x / r >= 10:
+            r *= 10
+
+        while r > 1:
+            left, x =divmod(x, r)
+            x, right = divmod(x, 10)
+            if left != right:
+                return False
+            r = r/100
+
+        return True
+        """
+        :type x: int
+        :rtype: bool
+        """

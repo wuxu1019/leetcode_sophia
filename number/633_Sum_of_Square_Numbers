@@ -1,0 +1,25 @@
+class Solution(object):
+    def judgeSquareSum(self, c):
+        p1 = 0
+        p2 = int(math.sqrt(c))
+        while p1 <= p2:
+            if p1**2 + p2**2 < c:
+                p1 += 1
+            elif p1**2 + p2**2 > c:
+                p2 -= 1
+            else:
+                return True
+        return False
+        """
+        :type c: int
+        :rtype: bool
+        """
+
+class Solution(object):
+    def judgeSquareSum(self, c):
+        def is_square(N):
+            return int(N**.5)**2 == N
+        
+        return any(is_square(c - a*a) 
+            for a in xrange(int(c**.5) + 1))
+

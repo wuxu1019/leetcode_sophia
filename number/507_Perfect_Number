@@ -1,0 +1,24 @@
+class Solution(object):
+    def checkPerfectNumber(self, num):
+        summ = 1
+        for f, expo in self.generateFactor(abs(num)):
+            summ *= sum(f ** i for i in xrange(expo+1))
+        return summ == 2*num
+        
+    def generateFactor(self, num):
+        f = 2
+        while f*f < num:
+            expo = 0
+            while num%f == 0:
+                expo += 1
+                num /= f
+            if expo:
+                yield (f, expo)
+            f+= 1
+        if num > 1:
+            yield (num, 1)
+                
+        """
+        :type num: int
+        :rtype: bool
+        """

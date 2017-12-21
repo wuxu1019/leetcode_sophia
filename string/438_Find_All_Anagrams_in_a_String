@@ -1,0 +1,53 @@
+class Solution(object):
+    def findAnagrams(self, s, p):
+        l_p = len(p)
+        l_s = len(s)
+        s_c = collections.Counter(s[0:l_p])
+        p_c = collections.Counter(p)
+        rt = []
+        i = 0
+        
+        while l_s >= l_p:
+            if not s_c - p_c:
+                rt.append(i)
+            if i == l_s-l_p:
+                break
+            s_c[s[l_p+i]] += 1
+            s_c[s[i]] -= 1
+            i += 1
+        
+        return rt
+        """
+        :type s: str
+        :type p: str
+        :rtype: List[int]
+        """
+
+class Solution(object):
+    def findAnagrams(self, s, p):
+        lp, ls = len(p), len(s)
+        pd = collections.defaultdict(int)
+        rt = []
+        for i in p:
+            pd[i] -= 1
+        
+        for i in range(0, ls):
+            if i < lp:
+                pd[s[i]] += 1
+                if not pd[s[i]]:
+                   del pd[s[i]]
+            else:
+                if not pd:
+                   rt.append(i-lp)
+                pd[s[i]] +=1
+                if not pd[s[i]]:
+                   del pd[s[i]]
+                
+                pd[s[i-lp]] -= 1
+                if not pd[s[i-lp]]:
+                   del pd[s[i-lp]]
+        if not pd:
+            rt.append(ls-lp)
+            
+        return rt
+        

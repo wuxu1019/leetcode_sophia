@@ -1,0 +1,23 @@
+class Solution(object):
+    def wordPattern(self, pattern, str):
+        l = str.split(' ')
+        if len(l) != len(pattern):
+            return False
+        dic = {}
+        for i in range(len(l)):
+            if dic.has_key(l[i]):
+                if pattern[i] != dic[l[i]]:
+                    return False
+            elif pattern[i] in dic.values():
+                return False
+            else:
+                dic[l[i]] = pattern[i]
+        return True
+    
+        """
+        :type pattern: str
+        :type str: str
+        :rtype: bool
+        """
+
+        

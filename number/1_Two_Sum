@@ -1,0 +1,41 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        s = 0
+        e = len(nums)-1
+        if e < 1:
+            return None
+        # remember the location for each integer
+        dic = {}
+        for i in range(0, len(nums)):
+            if dic.has_key(nums[i]):
+                dic[nums[i]].append(i)
+            else:
+                dic[nums[i]] = [i]
+        # sort the list and find the two number which sum as target
+        nums.sort()
+        while e > s:
+            if nums[s] + nums[e] > target:
+                e -= 1
+            if nums[s] + nums[e] < target:
+                s += 1
+            if nums[s] + nums[e] == target:
+                if nums[s] == nums[e]:
+                    return [dic[nums[s]][0], dic[nums[e]][1]]
+                return [dic[nums[s]][0], dic[nums[e]][0]]
+                
+        
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+class Solution(object):
+    def twoSum(self, nums, target):
+        if len(nums) < 2:
+            return None
+        dic  = {}
+        for i in range(0, len(nums)):
+            if nums[i] not in dic:
+                dic[target - nums[i]] = i
+            else:
+                return dic[nums[i]], i        
