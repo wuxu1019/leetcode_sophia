@@ -1,0 +1,45 @@
+class NumArray(object):
+
+    def __init__(self, nums):
+        self.nums = nums
+        self.sum = []
+        s = 0
+        for j in nums:
+            s += j
+            self.sum.append(s)
+        """
+        :type nums: List[int]
+        """
+        
+
+    def sumRange(self, i, j):
+        if not i:
+            return self.sum[j]
+        else:
+            return self.sum[j] - self.sum[i-1]
+        """
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+
+class NumArray(object):
+
+    def __init__(self, nums):
+        self.data = nums
+        for i in xrange(1, len(nums)):
+            self.data[i] += self.data[i-1]
+        """
+        :type nums: List[int]
+        """
+        
+
+    def sumRange(self, i, j):
+        return self.data[j] - (self.data[i-1] if i > 0 else 0)
+        """
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+        
+

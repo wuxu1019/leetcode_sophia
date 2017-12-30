@@ -1,0 +1,43 @@
+class Solution(object):
+    def canPlaceFlowers(self, flowerbed, n):
+        count, maxplant, s, e = 0, 0, 0, len(flowerbed)-1
+        while s < len(flowerbed) and not flowerbed[s]:
+            count += 1
+            s += 1
+        if s == len(flowerbed):
+            maxplant = -((-count)/2)
+            return n <= maxplant
+        else:
+            maxplant += count/2
+            count = 0
+        while not flowerbed[e]:
+            count += 1
+            e -= 1
+        maxplant += count/2
+        count = 0
+        for i in flowerbed[s:e+1]:
+            if not i:
+                count += 1
+            if i == 1 and count:
+                maxplant += -((-count)/2)-1
+                count = 0
+        return n <= maxplant
+        """
+        :type flowerbed: List[int]
+        :type n: int
+        :rtype: bool
+        """
+        
+class Solution(object):
+    def canPlaceFlowers(self, flowerbed, n):
+        if not flowerbed:
+            return False
+        count = 0
+        for i, v in enumerate(flowerbed):
+            if not v:
+                pre = flowerbed[i-1] if i > 0 else 0
+                nex = flowerbed[i+1] if i < len(flowerbed)-1 else 0
+                if not pre and not nex:
+                    flowerbed[i] = 1
+                    count += 1
+        return n <= count
