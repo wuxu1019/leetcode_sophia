@@ -1,0 +1,26 @@
+class Solution(object):
+    def findNthDigit(self, n):
+        stage, factor = 9, 1
+        rem = n
+        max_level = stage * factor
+        while rem > max_level:
+            rem -= max_level
+            stage *=10
+            factor += 1
+            max_level = stage * factor
+        c, r = divmod(rem, factor)
+        target, bit = stage/9+c, r
+        if not r:
+            target, bit = target-1, factor
+        
+        ar = []
+        c = target
+        while c:
+            c, r = divmod(c, 10)
+            ar = [r] + ar
+        return ar[bit-1]
+        """
+        :type n: int
+        :rtype: int
+        """
+        
