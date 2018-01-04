@@ -1,0 +1,16 @@
+class Solution(object):
+    def mySqrt(self, x):
+        l, r = 0, x
+        while r >= l:
+            mid = l + (r-l)/2
+            if mid*mid <= x < (mid+1)*(mid+1):
+                return mid
+            elif x > mid*mid:
+                l = mid+1
+            else:
+                r = mid
+        """
+        :type x: int
+        :rtype: int
+        """
+        

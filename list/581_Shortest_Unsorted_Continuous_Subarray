@@ -1,0 +1,45 @@
+#https://leetcode.com/problems/shortest-unsorted-continuous-subarray/discuss/103057
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        nums_s = sorted(nums)
+        s, e = 0, 0
+        for i in range(len(nums)):
+            if nums[i] != nums_s[i]:
+                s = i
+                break
+        for j in range(len(nums)-1, -1, -1):
+            if nums[j] != nums_s[j]:
+                e = j
+                break
+        return 0 if e == s else e-s+1
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        comp = [m==n for m, n in zip(nums, sorted(nums))]
+        return 0 if all(comp) else len(comp) - comp[::-1].index(False) - comp.index(False)
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        b, e, l = -1, -2, len(nums)
+        maxi, mini = -float('INF'), float('INF')
+        for i in range(len(nums)):
+            maxi = max(nums[i], maxi)
+            mini = min(nums[l-i-1], mini)
+            if nums[i] < maxi:
+                e = i
+            if nums[l-i-1] > mini:
+                b = l-i-1
+        return e-b+1
+            
+        """
+        :type nums: List[int]
+        :rtype: int
+        ""

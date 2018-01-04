@@ -1,0 +1,35 @@
+class Solution(object):
+    def convertToTitle(self, n):
+        h_map = {}
+        degree = 26
+        for i in range(0, degree):
+            h_map[i+1] = chr(ord('A')+i)
+        
+        rt = []
+        rem = n
+        while rem:
+            rem, c = divmod(rem, degree)
+            if not c:
+                rt = [h_map[degree]] + rt
+                rem -= 1
+            else:
+                rt = [h_map[c]] + rt
+            
+        return ''.join(rt)
+        """
+        :type n: int
+        :rtype: str
+        """
+
+class Solution(object):
+    def convertToTitle(self, n):
+        letters = [chr(i) for i in range(ord('A'), ord('Z')+1)]
+        rem, rt = n, [] 
+        while rem > 0:
+            rem, c = divmod(rem-1, 26)
+            rt = [letters[c]] + rt
+        return ''.join(rt)
+        """
+        :type n: int
+        :rtype: str
+        """        

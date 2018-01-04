@@ -1,0 +1,35 @@
+class Solution(object):
+    def thirdMax(self, nums):
+        numspool = set([])
+        for num in nums:
+            numspool.add(num)
+            if len(numspool) > 3:
+                numspool = set(sorted(list(numspool))[1:])
+        if len(numspool) == 1:
+            return list(numspool)[0]
+        elif len(numspool) == 2:
+            return max(list(numspool)[0], list(numspool)[1])
+        else:
+            return sorted(list(numspool))[0]
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+class Solution(object):
+    def thirdMax(self, nums):
+        a = b = c = -float('INF')
+        for num in nums:
+            if num in (a, b, c):
+                continue
+            if num > a:
+                a, b, c = num, a, b
+            elif num > b:
+                a, b, c = a, num, b
+            elif num > c:
+                a, b, c = a, b, num
+        return c if c != -float('INF') else a
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
