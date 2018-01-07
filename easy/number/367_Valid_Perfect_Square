@@ -1,0 +1,18 @@
+class Solution(object):
+    def isPerfectSquare(self, num):
+        lo, hi = 1, num
+        
+        while hi >= lo:
+            mid = (lo + hi)>>1
+            if mid * mid == num:
+                return True
+            elif mid * mid > num:
+                hi = mid - 1
+            else:
+                lo = mid + 1
+        return False
+            
+        """
+        :type num: int
+        :rtype: bool
+        """

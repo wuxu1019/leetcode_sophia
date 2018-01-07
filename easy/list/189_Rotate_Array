@@ -1,0 +1,19 @@
+class Solution(object):
+    def rotate(self, nums, k):
+        l = len(nums)
+        k = k % l
+        nums[:] = nums[l-k:] + nums[:l-k]
+        
+        """
+        while k > 0:
+            c = nums.pop()
+            nums.insert(0, c)
+            k -= 1
+        """
+            
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        

@@ -1,0 +1,13 @@
+class Solution(object):
+    def findRadius(self, houses, heaters):
+        houses.sort()
+        heaters.sort()
+        heaters.append(float('INF'))
+        i, r = 0, 0
+        for x in houses:
+            while x - heaters[i] >= heaters[i+1] - x:
+                i += 1
+            r = max(r, abs(heaters[i] - x))
+        return r
+                
+                
