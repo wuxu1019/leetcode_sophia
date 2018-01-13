@@ -1,0 +1,16 @@
+#https://discuss.leetcode.com/topic/98454/c-9-lines-o-n-log-n-map-plus-stack-with-binary-search
+class Solution(object):
+    def constructMaximumBinaryTree(self, nums):
+        if not nums:
+            return None
+        m = max(nums)
+        index = nums.index(m)
+        root = TreeNode(m)
+        root.left = self.constructMaximumBinaryTree(nums[:index]) if index >= 1 else None
+        root.right = self.constructMaximumBinaryTree(nums[index+1:]) if index <= len(nums)-2 else None
+        return root
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        
