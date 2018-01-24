@@ -1,0 +1,17 @@
+class Codec:
+    def __init__(self):
+        self.urlTocode = {}
+        self.codeTourl = {}
+    def encode(self, longUrl):
+        if not self.urlTocode.has_key(longUrl):
+            code = ''.join([random.choice('123456789'+string.ascii_letters) for _ in range(6)])
+            self.urlTocode[longUrl] = code
+            self.codeTourl[code] = longUrl
+        return self.urlTocode[longUrl]
+
+    def decode(self, shortUrl):
+        return self.codeTourl[shortUrl]
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(url))

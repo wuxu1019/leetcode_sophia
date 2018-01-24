@@ -19,3 +19,20 @@ class Solution(object):
         :type S: str
         :rtype: List[int]
         """
+
+class Solution(object):
+    def partitionLabels(self, S):
+        if not S:
+            return []
+        rt = []
+        while S:
+            i = 1
+            while set(S[:i]) & set(S[i:]):
+                i += 1
+            rt.append(i)
+            S = S[i:]
+        return rt
+        """
+        :type S: str
+        :rtype: List[int]
+        """
