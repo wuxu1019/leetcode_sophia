@@ -1,0 +1,18 @@
+class Solution(object):
+    def reconstructQueue(self, people):
+        mp, rt = {}, []
+        for p in people:
+            if mp.has_key(p[0]):
+                mp[p[0]].append(p[1])
+            else:
+                mp[p[0]] = [p[1]]
+        for k in sorted(mp.keys(), reverse=1):
+            v = sorted(mp[k])
+            for i in v:
+                rt.insert(i, [k, i])
+        return rt
+        
+        """
+        :type people: List[List[int]]
+        :rtype: List[List[int]]
+        """
