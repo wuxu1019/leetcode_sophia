@@ -1,5 +1,7 @@
 # bubble sort
-# time complesity is O(n2)
+# time complexity is O(n2)
+# space complexity is 0
+
 import sys
 import multiprocessing
 
