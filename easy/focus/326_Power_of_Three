@@ -1,0 +1,15 @@
+'''
+Given an integer, write a function to determine if it is a power of three.
+
+Follow up:
+Could you do it without using any loop / recursion?
+
+'''
+
+class Solution(object):
+    def isPowerOfThree(self, n):
+        if n <= 0:
+            return False
+        m = math.log(sys.maxint)/math.log(3)
+        return not 3**int(m) % n 
+
