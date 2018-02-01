@@ -1,4 +1,6 @@
-
+"""
+https://www.geeksforgeeks.org/vertical-sum-in-binary-tree-set-space-optimized/
+"""
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
