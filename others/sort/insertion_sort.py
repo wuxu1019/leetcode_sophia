@@ -4,6 +4,7 @@
 
 import sys
 import multiprocessing
+import bisect
 
 def insertion_sort(nums):
     for i in range(1, len(nums)):
@@ -15,11 +16,16 @@ def insertion_sort(nums):
         nums[j+1] = key 
     print nums
     return None
+def insertion_sort_2(nums):
+    for i in range(1, len(nums)):
+        bisect.insort(nums, nums.pop(i), 0, i)
+    print nums
+    return None
 
 def main():
     nums = [5, 4, 3, 2, 1]
     print nums
-    p = multiprocessing.Process(target=insertion_sort, args=(nums,))
+    p = multiprocessing.Process(target=insertion_sort_2, args=(nums,))
     p.start()
     p.join(10)
     if p.is_alive():
