@@ -13,7 +13,7 @@ def heaplize(nums, p):
         max = l
     if max != p:
         nums[max], nums[p] = nums[p], nums[max]
-        heaplize(nums, max)
+        nums = heaplize(nums, max)
     return nums
 
 def heap_sort(nums):
@@ -22,9 +22,11 @@ def heap_sort(nums):
     for i in range(len(nums)-1, 0, -1):
         nums[i], nums[0] = nums[0], nums[i]
         nums = heaplize(nums[0:i], 0)+nums[i:len(nums)]
+    print nums
+    return nums
 
 def main():
-    nums = [1, 6, 8, 9, 7, 3, 4, 5]
+    nums = [1, 2, 6, 8, 9, 7, 3, 4, 5, 10]
     print nums
     p = multiprocessing.Process(target=heap_sort, args=(nums,))
     p.start()
