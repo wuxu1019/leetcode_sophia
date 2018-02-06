@@ -48,4 +48,14 @@ class Solution(object):
                         rt = min(rt, word, key=len) if rt else word
                         break
         return rt
-            
+
+class Solution(object):
+    def shortestCompletingWord(self, licensePlate, words):
+        licensePlate = licensePlate.lower()
+        licensePlate = collections.Counter([i for i in licensePlate if i.isalpha()])
+        rt = None
+        for word in words:
+            if (not rt or len(word) < len(rt)) and not (licensePlate - collections.Counter(word)):
+                rt = word
+        return rt
+                    
