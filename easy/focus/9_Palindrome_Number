@@ -1,0 +1,24 @@
+"""
+Determine whether an integer is a palindrome. Do this without extra space.
+"""
+
+class Solution(object):
+    def isPalindrome(self, x):
+        if x < 0:
+            return False
+        m = 1
+        while x/m > 9:
+            m = m*10
+        while m:
+            l = x/m
+            r = x%10
+            if l == r:
+                x = (x%m)/10
+                m = m/100
+            else:
+                return False
+        return True
+        """
+        :type x: int
+        :rtype: bool
+        """
