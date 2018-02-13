@@ -1,0 +1,18 @@
+The code is much simpler now with each function doing one small thing. We can move all these functions into a separate module and reuse it in other programs.
+
+Problem 2: Write a program that takes one or more filenames as arguments and prints all the lines which are longer than 40 characters.
+
+Problem 3: Write a function findfiles that recursively descends the directory tree for the specified directory and generates paths of all the files in the tree.
+
+Problem 4: Write a function to compute the number of python files (.py extension) in a specified directory recursively.
+
+Problem 5: Write a function to compute the total number of lines of code in all python files in the specified directory recursively.
+
+Problem 6: Write a function to compute the total number of lines of code, ignoring empty and comment lines, in all python files in the specified directory recursively.
+
+Problem 7: Write a program split.py, that takes an integer n and a filename as command line arguments and splits the file into multiple small files with each having n lines.
+
+5.4. Itertools
+The itertools module in the standard library provides lot of intersting tools to work with iterators.
+
+Lets look at so
