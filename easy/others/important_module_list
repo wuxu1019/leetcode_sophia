@@ -1,0 +1,7 @@
+1. datetime
+2. os, path
+3. itertools
+4. Getters and setters
+5. Decorators
+6. *args, **kwargs
+7. numpy
