@@ -37,4 +37,21 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+class Solution(object):
+    def inorderTraversal(self, root):
+        stk, rt = [], []
+        current = root
         
+        while current or stk:
+            while current:
+                stk.append(current)
+                current = current.left
+            current = stk.pop()
+            rt.append(current.val)
+            current = current.right
+        return rt
+            
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """        
