@@ -41,5 +41,5 @@ class TestCombinationSum3(unittest.TestCase):
 
 if __name__ == '__main__':
     testsuit = unittest.TestLoader().loadTestsFromTestCase(TestCombinationSum3)
-    unittest.TextTestRunner(verbosity=1).run(testsuit)
+    unittest.TextTestRunner(verbosity=2).run(testsuit)
 
