@@ -1,0 +1,38 @@
+class Solution(object):
+    def partitionLabels(self, S):
+        if not S:
+            return []
+        dic = {}
+        for n, v in enumerate(S):
+            if dic.has_key(v):
+                dic[v][-1] = n
+            else:
+                dic[v] = [n, n]
+        group = [dic[S[0]]]
+        for s in S:
+            if dic[s][0] <= group[-1][1]:
+                group[-1][0], group[-1][1] = min(group[-1][0], dic[s][0]), max(group[-1][1], dic[s][1])
+            else:
+                group.append(dic[s])
+        return [i[1]-i[0]+1 for i in group]
+        """
+        :type S: str
+        :rtype: List[int]
+        """
+
+class Solution(object):
+    def partitionLabels(self, S):
+        if not S:
+            return []
+        rt = []
+        while S:
+            i = 1
+            while set(S[:i]) & set(S[i:]):
+                i += 1
+            rt.append(i)
+            S = S[i:]
+        return rt
+        """
+        :type S: str
+        :rtype: List[int]
+        """
