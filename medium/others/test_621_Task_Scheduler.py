@@ -17,6 +17,28 @@ import copy
 
 class Solution(object):
 
+    def leastInterval_basic(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
+        ct = 0
+        mp = sorted(collections.Counter(tasks).values(), reverse=1)
+        n += 1
+        while mp:
+            l = len(mp)
+            if l > n:
+                mp = [i - 1 for i in mp[:n] if i - 1 > 0] + mp[n:]
+                mp.sort(reverse=1)
+            else:
+                mp = [i - 1 for i in mp if i - 1 > 0]
+            if not mp:
+                ct += l
+            else:
+                ct += n
+        return ct
+
     def leastInterval_findroutine(self, tasks, n):
         """
         :type tasks: List[str]
