@@ -41,3 +41,22 @@ class Solution(object):
                     curr = curr / 10
                 curr = curr / 10 + 1
         return rt
+
+    def lexicalOrder_morespace(self, n):
+        withkeys = []
+        RANGE = 1000000
+        for i in xrange(n):
+            key = i
+            while key < RANGE:
+                key = key * 10
+            withkeys.append(key * RANGE + i)
+        withkeys.sort()
+        return [i%RANGE for i in withkeys]
+
+if __name__ == '__main__':
+    s = Solution()
+    rt1 = s.lexicalOrder_math(123)
+    print rt1
+
+    rt2 = s.lexicalOrder_math(123)
+    print rt2
