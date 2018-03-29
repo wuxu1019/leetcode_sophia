@@ -58,6 +58,7 @@ class Solution(object):
 
     def longestPalindromeSubseq_3(self, s):
         d = {}
+
         def helper(s):
             if s in d:
                 return s[d]
@@ -65,10 +66,12 @@ class Solution(object):
             for c in set(s):
                 l = s.find(c)
                 r = s.rfind(c)
-                max_lth = max(max_lth, 1 if l==r else 2+helper(s[l+1:r]))
+                max_lth = max(max_lth, 1 if l == r else 2 + helper(s[l + 1:r]))
             d[s] = max_lth
             return max_lth
+
         return helper(s)
+
 
 if __name__ == '__main__':
     s = Solution()
