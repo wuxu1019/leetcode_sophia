@@ -52,6 +52,7 @@ class Solution(object):
                 dp[j] = min(dp[j-1], dp[j]) + grid[i][j]
         return dp[-1]
 
+
 if __name__ == '__main__':
     s = Solution()
     grid = [[1,3,1], [1,5,1], [4,2,1]]
