@@ -36,7 +36,7 @@ class Solution(object):
         return ct
 
     def subarraySum_bitmap(self, nums, k):
-        record = {0 : 1}
+        record = {0: 1}
         s = 0
         ct = 0
         for num in nums:
@@ -44,7 +44,8 @@ class Solution(object):
             diff = s - k
             if diff in record:
                 ct += record[diff]
-            record[num] = record.get(num, 0) + 1
+            record[s] = record.get(s, 0) + 1
+
         return ct
 
 
