@@ -13,7 +13,7 @@ Credits:
 Special thanks to @pbrother for adding this problem and creating all test cases.
 
 """
-import bisect
+import bisect_sample
 
 class Solution(object):
     def lengthOfLIS_dp(self, nums):
@@ -41,7 +41,7 @@ class Solution(object):
             return 0
         record = []
         for num in nums:
-            p = bisect.bisect_left(record, num)
+            p = bisect_sample.bisect_left(record, num)
             if p >= len(record):
                 record.append(num)
             else:
