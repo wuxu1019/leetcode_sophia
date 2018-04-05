@@ -64,3 +64,21 @@ class Solution(object):
             i += 1
         ct['n'] += sign * digt
         return ct
+
+    def changestr_re(self, s):
+        ct = {'x': 0, 'n': 0}
+        s1 = re.findall('[+-]?\d*x', s)
+        for t in s1:
+            if t:
+                if t == 'x' or t == '+x':
+                    ct['x'] += 1
+                elif t == '-x':
+                    ct['x'] -= 1
+                else:
+                    ct['x'] += int(t[:-1])
+        s = re.sub('[+-]?\d*x', '*', s)
+        s2 = re.findall('[+-]?\d*', s)
+        for t in s2:
+            if t:
+                ct['n'] += int(t)
+        return ct
