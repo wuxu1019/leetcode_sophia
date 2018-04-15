@@ -23,7 +23,7 @@ Special thanks to @pbrother for adding this problem and creating all test cases.
 
 """
 import collections
-import bisect
+import bisect_sample
 
 class Solution(object):
     def isSubsequence1(self, s, t):
@@ -57,7 +57,7 @@ class Solution(object):
         for c in s:
             if not c in mp:
                 return False
-            index = bisect.bisect(mp[c], last)
+            index = bisect_sample.bisect_sample(mp[c], last)
             if index == len(mp[c]):
                 return False
             last = mp[c][index]
