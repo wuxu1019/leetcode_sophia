@@ -12,6 +12,7 @@ Output:
   ["a","a","b"]
 ]
 """
+import collections
 
 class Solution(object):
     def partition_dfs_dp(self, s):
@@ -59,3 +60,12 @@ class Solution(object):
 
         dfs([], s)
         return self.rt
+
+if __name__ == '__main__':
+    l = 'aabaab'
+    s = Solution()
+    rt1 = s.partition_dfs_dp(l)
+    print rt1
+
+    rt2 = s.partition_dfs(l)
+    print rt2
