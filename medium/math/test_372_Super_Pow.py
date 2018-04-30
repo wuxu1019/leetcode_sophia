@@ -32,4 +32,3 @@ class Solution(object):
             return (pow(a, index, 1337) * superPowH(pow(a, 10, 1337), b, base)) % 1337
         return superPowH(a, b, 1)
 
-d
