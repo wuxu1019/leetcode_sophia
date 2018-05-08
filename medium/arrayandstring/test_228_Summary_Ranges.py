@@ -15,7 +15,7 @@ Special thanks to @jianchao.li.fighter for adding this problem and creating all 
 
 
 class Solution(object):
-    def summaryRanges(self, nums):
+    def summaryRanges_group(self, nums):
         """
         :type nums: List[int]
         :rtype: List[str]
@@ -30,5 +30,22 @@ class Solution(object):
             else:
                 ans.append("{}->{}".format(nums[start], nums[end - 1]))
             start = end
+        return ans
+
+    def summaryRanges_onepass(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[str]
+        """
+        start = 0
+        ans = []
+        nums.append(float('INF'))
+        for i in range(1, len(nums)):
+            if nums[i] > nums[i - 1] + 1:
+                if i - 1 == start:
+                    ans.append(str(nums[start]))
+                else:
+                    ans.append(str(nums[start]) + "->" + str(nums[i - 1]))
+                start = i
         return ans
 
