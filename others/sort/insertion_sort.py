@@ -4,7 +4,7 @@
 
 import sys
 import multiprocessing
-import bisect
+import bisect_sample
 
 def insertion_sort(nums):
     for i in range(1, len(nums)):
@@ -18,7 +18,7 @@ def insertion_sort(nums):
     return None
 def insertion_sort_2(nums):
     for i in range(1, len(nums)):
-        bisect.insort(nums, nums.pop(i), 0, i)
+        bisect_sample.insort(nums, nums.pop(i), 0, i)
     print nums
     return None
 
