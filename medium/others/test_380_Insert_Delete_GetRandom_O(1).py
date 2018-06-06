@@ -38,7 +38,7 @@ class RandomizedSet(object):
         """
         if val in self.data:
             del self.data[val]
-            pos = self.l.index(val)
+            pos = self.l.index(val) # This is not O(1), index is O(n)
             self.l[-1], self.l[pos] = self.l[pos], self.l[-1]
             self.l.pop()
             return True
@@ -51,3 +51,57 @@ class RandomizedSet(object):
         :rtype: int
         """
         return random.choice(self.l)
+
+
+class RandomizedSet:
+
+    def __init__(self):
+        # do intialization if necessary
+        self.data = []
+        self.pos = {}
+
+    """
+    @param: val: a value to the set
+    @return: true if the set did not already contain the specified element or false
+    """
+
+    def insert(self, val):
+        # write your code here
+        if val in self.pos:
+            return False
+        self.pos[val] = len(self.data)
+        self.data.append(val)
+
+        return True
+
+    """
+    @param: val: a value from the set
+    @return: true if the set contained the specified element or false
+    """
+
+    def remove(self, val):
+        # write your code here
+        if val not in self.pos:
+            return False
+        last, p = self.data[-1], self.pos[val]
+        self.pos[last] = p
+        self.data[p] = last
+        self.data.pop()
+        del self.pos[last]
+        return True
+
+    """
+    @return: Get a random element from the set
+    """
+
+    def getRandom(self):
+        import random
+        # write your code here
+        if self.data:
+            return self.data[random.choice(range(0, len(self.data)))]
+
+# Your RandomizedSet object will be instantiated and called as such:
+# obj = RandomizedSet()
+# param = obj.insert(val)
+# param = obj.remove(val)
+# param = obj.getRandom()
