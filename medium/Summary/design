@@ -1,0 +1,20 @@
+stack
+1. Implement Queue using Stacks
+2. Implement Stack using Queues
+3. Min Stack
+4. Binary Search Tree Iterator
+   BST traversal/ Tree operation always uses stack.
+
+stack
+type 1. build up a stack, pop, analysis, push, then pop again
+type 2. check data, and push in stack, when see some condition, pop, or push data to stack
+
+array
+1. Insert Delete GetRandom O(1)
+
+array
+array contain two information, first is the data, second is the index.
+remove data means, remove data and all other data behind, and their index will be changed
+the complexity is O(n)
+to make to be O(1), need not move data behind, a good way is move the last one to original position
+
