@@ -18,28 +18,30 @@ class ListNode(object):
 
 class LinkedList(object):
     def __init__(self):
-        self.head = ListNode(0)
+        self.head = None
+        self.tail = None
 
     def add(self, element):
-        pre, point = dereference_pointer(self.head), self.head.xor
-        while point.xor and pre ^ point.xor != 0:
-            point, pre = get_pointer(pre ^ point.xor), point
         newnode = ListNode(element)
-        point.xor = pre ^ dereference_pointer(newnode)
+        newaddr = dereference_pointer(newnode)
+
+        if not self.head and not self.tail:
+            self.head, self.tail = newnode, newnode
+            return
+        self.tail.xor ^= newaddr
+        self.tail = newnode
         return
 
     def get(self, index):
-        pre = self.head
-        point = dereference_pointer(self.head.xor)
+        pre, cur = 0, self.head
         start = 0
-
-        while start < index and pre ^ point.xor != 0:
-            point, pre = get_pointer(pre ^ point.xor), point
+        while start < index and cur != self.tail:
+            pre, cur = dereference_pointer(cur), get_pointer(pre ^ cur.xor)
             start += 1
-        if pre ^ point.xor == 0:
-            return None
+        if start == index:
+            return cur.val
         else:
-            return get_pointer(point).val
+            return None
 
 if __name__ == '__main__':
     l = LinkedList()
