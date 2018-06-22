@@ -64,4 +64,21 @@ class Solution(object):
             pos[s[j]] = j
         return ans
 
+    def lengthOfLongestSubstring_bitmap(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        pos = [-1] * 256
+        i = 0
+        ans = 0
+        for j in range(len(s)):
+            p = ord(s[j])
+            if pos[p] >= 0 and i <= pos[p]:
+                i = pos[p] + 1
+            else:
+                ans = max(ans, j - i + 1)
+            pos[p] = j
+        return ans
+
 
