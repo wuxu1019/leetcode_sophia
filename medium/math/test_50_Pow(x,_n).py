@@ -53,3 +53,22 @@ class Solution(object):
             x *= x
             n = n >> 1
         return ans
+
+    def myPow_bitmap(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        if not n:
+            return 1
+        if n < 0:
+            n = -n
+            x = 1 / x
+        bitmap = bin(n)[2:]
+        ans = 1
+        for bit in bitmap[::-1]:
+            if bit == '1':
+                ans *= x
+            x = x * x
+        return ans
