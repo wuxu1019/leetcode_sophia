@@ -20,7 +20,22 @@ Note: 1 <= N <= 10 ^ 9.
 
 
 """
+"""
+basic idea is that if it can divide m and N/m is and odd number, than it can combine a consecutive 
+of N/m number summary
 
+example:
+12 can divided by 1, 2, 3, 4, 6, 12
+12/1 = 12 is not odd
+12/2 = 6 is not odd
+12/3 = 4 is not odd
+12/4 = 3 is odd, means 3, 4, 5
+12/6 = 2 is not odd
+12/12 = 1 is odd, means 12
+
+so result is 2
+to be simple, only need to count sqrt(N)
+"""
 
 class Solution(object):
     def consecutiveNumbersSum(self, N):
