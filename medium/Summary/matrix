@@ -1,0 +1,6 @@
+1, how to process the first col or first row,
+   can add one line above and one line left to make code simple
+
+2, list(zip(*matrix)[::-1]) anti clockwise turn 90 degree
+   list(zip(*(matrix[::-1]))) clockwise turn 90 degree
+
