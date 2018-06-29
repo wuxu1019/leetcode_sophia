@@ -1,0 +1,27 @@
+1. array
+   the biggest number
+   the kth biggest number
+2. 2D array
+   spiral matrix
+   Diagonal Traverse matrix
+   clockwise 90
+   anti clockwise 90
+3. string (immutable, so change string need to create a new sting)
+   KMP
+   summary
+   judge exsit using set, judge amount using dict
+
+Keypoint
+Determine the movement strategy for both pointers
+4. Two-pointer Technique
+   1> from two ends and move to the middle
+   2> fast point and slow point(
+      i moves one step each time
+      k moves one step only if a new needed value is added
+   3> slide windlow
+
+5. Three-pointer Technique
+   1> three way partition
+      i, j in the front, move afterward
+      n in the end, move forward
+   2> partition, left is less than target, right is bigger than target
