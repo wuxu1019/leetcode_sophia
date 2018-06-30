@@ -25,3 +25,32 @@ Determine the movement strategy for both pointers
       i, j in the front, move afterward
       n in the end, move forward
    2> partition, left is less than target, right is bigger than target
+
+6. Hash set is used to check if
+   1> here is repeat number
+   2> here is cycle
+
+   Hash map is used to store (key, value) pairs
+   1> use a hash map is that we need more information rather than only the key.
+   2> Another frequent scenario is to aggregate all the information by key
+
+7. How to buildup hash map key value
+
+   1> When the order of each element in the string/array doesn't matter,
+   you can use the sorted string/array as the key.
+
+   2> If you only care about the offset of each value,
+   usually the offset from the first value, you can use the offset as the key.
+
+   3> In a tree, you might want to directly use the TreeNode as key sometimes.
+   But in most cases, the serialization of the subtree might be a better idea.
+
+   4> In a matrix, you might want to use the row index or the column index as key.
+
+   5> In a Sudoku, you can combine the row index and the column index to identify
+   which block this element belongs to.
+   (i, j)->(i*3)*3 + j/3
+
+   6> Sometimes, in a matrix, you might want to aggregate the values in the same diagonal line.
+   anti-diagonal (i, j) -> i + j
+   diagonal (i, j) -> i-j
