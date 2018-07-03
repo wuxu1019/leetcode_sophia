@@ -1,0 +1,10 @@
+union find steps
+1. init, make a list name A which A[i] = i
+   represent i is a group, other A[i] = -1(or None)
+
+2. union if a_root != b_root ; then A[a_root] = b_root
+
+3. find to find the root of any give group name
+
+root means the representation of the group
+
