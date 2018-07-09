@@ -1,3 +1,4 @@
 1. math need to take care of *, * may be very large, so need to consider the limitation
 2. math need to take care of /, a/b, if a*b is negative and in python2.7,
    a/b will be like bottom boundary, therefore 3/-5 will be -1, sometimes we need to count it as 0
+3. if a%k == b%k, then (a-b)%k = 0
