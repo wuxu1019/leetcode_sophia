@@ -122,6 +122,44 @@ class Solution:
             if node.right:
                 queue.append((lth + 1, node.right))
 
+    def findClosestLeaf_construct_graph(self, root, k):
+        # Write your code here
+        if not root:
+            return None
+
+        mp = {}
+        self.target = None
+
+        def dfs(rt, mp, target):
+            if rt.val == target:
+                self.target = rt
+                return True
+            if rt.left:
+                mp[rt.left] = rt
+                if dfs(rt.left, mp, target):
+                    return True
+            if rt.right:
+                mp[rt.right] = rt
+                if dfs(rt.right, mp, target):
+                    return True
+            return False
+
+        dfs(root, mp, k)
+        queue = collections.deque([self.target])
+        visited = set()
+        while queue:
+            p = queue.popleft()
+            if not p.left and not p.right:
+                return p.val
+            visited.add(p)
+            if p.left and p.left not in visited:
+                queue.append(p.left)
+            if p.right and p.right not in visited:
+                queue.append(p.right)
+            if p in mp and mp[p] not in visited:
+                queue.append(mp[p])
+        return -1
+
 
 if __name__ == '__main__':
     s = Solution()
@@ -132,6 +170,6 @@ if __name__ == '__main__':
     root.left.left.left.left = TreeNode(8)
     root.left.left.left.right = TreeNode(9)
     k = 2
-    rt = s.findClosestLeaf(root, k)
+    rt = s.findClosestLeaf_construct_graph(root, k)
     print rt
 
