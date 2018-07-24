@@ -1,0 +1,17 @@
+1. directed graph to get if here is a cycle:
+   1> dfs
+   three state: 0 - no visit, 1 - have visited, -1 - under visiting
+
+   2> topological sort
+   get ind and outd, put all element who has 0 outd to stack
+   pop each element p in  stack and count each one in intd[p] to -1
+   if it is 0, put to stack
+   until here is no element in stack
+
+   3> judge if undirect graph has a cycle,
+   build up mp, mp[a] = b, mp[b] = a, need to trans parent info in dfs
+
+      judge if direct graph has a cycle
+   -1, 0, 1, -1 means under visiting, 1 means has visited, 0 mean not visited
+
+
